@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "statcontrol-pro"
+version = "1.0.0"
+description = "Control estadístico de procesos con importación asistida e informes reproducibles"
+requires-python = ">=3.12"
+dependencies = ["dash>=4.4,<5", "plotly>=7.1,<8", "pandas>=3,<4", "numpy>=2,<3", "scipy>=1.17,<2", "openpyxl>=3.1,<4", "reportlab>=5,<6"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.12"]
+
+[project.scripts]
+statcontrol = "statcontrol.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+statcontrol = ["assets/*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
