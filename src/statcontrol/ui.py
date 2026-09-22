@@ -115,7 +115,6 @@ La detección automática es una sugerencia. No se imputan valores ni se descart
 def layout():
     return html.Div(
         [
-            dcc.Store(id="nav-scroll"),
             dcc.Store(id="source", storage_type="memory"),
             dcc.Store(id="dataset", storage_type="memory"),
             dcc.Store(id="result", storage_type="memory"),
@@ -635,12 +634,20 @@ def layout():
                                             card(
                                                 "Distribución de la referencia",
                                                 dcc.Graph(
-                                                    id="histogram", figure=empty(), config=GRAPH_CONFIG
+                                                    id="histogram",
+                                                    figure=empty(),
+                                                    config=GRAPH_CONFIG,
+                                                    className="capacity-graph",
                                                 ),
                                             ),
                                             card(
                                                 "Gráfico Q–Q normal",
-                                                dcc.Graph(id="qq", figure=empty(), config=GRAPH_CONFIG),
+                                                dcc.Graph(
+                                                    id="qq",
+                                                    figure=empty(),
+                                                    config=GRAPH_CONFIG,
+                                                    className="capacity-graph",
+                                                ),
                                             ),
                                         ],
                                         className="chart-grid",

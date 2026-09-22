@@ -6,3 +6,39 @@
 @media(max-width:800px){.sidebar{position:static;width:100%;height:auto;padding:18px}.brand{margin-bottom:18px}.sidebar-bottom,.sidebar>.nav-caption{display:none}.navigation{display:flex!important;flex-direction:row!important;overflow-x:auto}.nav-tab{min-width:160px;font-size:10px!important;padding:12px!important;white-space:nowrap}.main{margin-left:0}.topbar{height:52px;padding:0 20px}.breadcrumb{display:none}.workspace{padding:24px 18px}.page-heading{display:block}.page-heading .button{margin-top:18px}.import-grid{grid-template-columns:1fr}.intro-card{display:none}.three,.two{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.export-grid{grid-template-columns:1fr}.signal-row{align-items:flex-start;flex-direction:column;gap:8px}.action-bar{align-items:stretch;flex-direction:column}.footer{flex-direction:column;gap:7px}.template-row{flex-wrap:wrap}h1{font-size:27px}}
 
 #capacity-content{padding:0;text-align:left} .field [aria-disabled="true"]{opacity:.5}
+
+/* Keep the capacity plots compact. Plotly can otherwise inherit an expanding
+   height while a section changes from hidden to visible. */
+.chart-grid{align-items:start}
+.chart-grid>.card{width:100%;align-self:start}
+.capacity-graph{width:auto!important;height:340px!important;min-height:340px!important;max-height:340px!important;overflow:hidden}
+.capacity-graph .js-plotly-plot,.capacity-graph .plot-container,.capacity-graph .svg-container{height:100%!important;max-height:340px!important}
+
+@media(max-width:800px){
+  .sidebar{position:fixed;width:190px;height:100vh;padding:24px 12px}
+  .main{margin-left:190px}
+  .brand{padding:0 6px;margin-bottom:34px}
+  .brand strong{font-size:18px}
+  .brand-icon{width:34px;height:38px;font-size:23px}
+  .nav-tab{min-width:0;font-size:10px!important;padding:13px 9px!important;white-space:normal}
+  .sidebar-bottom{display:block;padding:18px 6px 0}
+  .sidebar>.nav-caption{display:block}
+  .navigation{display:block!important;overflow:visible}
+  .main{margin-left:190px}
+  .capacity-graph{height:300px!important;min-height:300px!important;max-height:300px!important}
+  .capacity-graph .js-plotly-plot,.capacity-graph .plot-container,.capacity-graph .svg-container{max-height:300px!important}
+}
+
+@media(max-width:560px){
+  .sidebar{position:sticky;top:0;width:100%;height:auto;padding:14px 16px;z-index:20}
+  .brand{margin-bottom:12px}
+  .sidebar-bottom,.sidebar>.nav-caption{display:none}
+  .navigation{display:flex!important;flex-direction:row!important;overflow-x:auto;scrollbar-width:thin}
+  .nav-tab{min-width:150px;white-space:nowrap}
+  .main{margin-left:0}
+  .topbar{display:none}
+  .workspace{padding:20px 14px}
+  .metrics{grid-template-columns:1fr}
+  .capacity-graph{height:280px!important;min-height:280px!important;max-height:280px!important}
+  .capacity-graph .js-plotly-plot,.capacity-graph .plot-container,.capacity-graph .svg-container{max-height:280px!important}
+}

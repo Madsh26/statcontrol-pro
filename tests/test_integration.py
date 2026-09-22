@@ -53,11 +53,14 @@ def test_app_routes_and_ids():
     assert response.status_code == 200
     assert client.get("/_dash-dependencies").status_code == 200
     ids = []
+    classes = []
 
     def walk(obj):
         if isinstance(obj, dict):
             if "props" in obj and "id" in obj["props"]:
                 ids.append(obj["props"]["id"])
+            if "props" in obj and "className" in obj["props"]:
+                classes.append(obj["props"]["className"])
             for value in obj.values():
                 walk(value)
         elif isinstance(obj, list):
@@ -67,6 +70,8 @@ def test_app_routes_and_ids():
     walk(response.json)
     assert len(ids) == len(set(ids))
     assert {"upload", "template-csv", "template-xlsx", "run", "guide-section"}.issubset(ids)
+    assert "nav-scroll" not in ids
+    assert classes.count("capacity-graph") == 2
 
 
 def test_callbacks_compute_invalidate_and_isolate_sessions():

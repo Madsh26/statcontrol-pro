@@ -61,12 +61,6 @@ def create_app():
     app.server.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
     app.layout = layout
 
-    app.clientside_callback(
-        "function(page) { requestAnimationFrame(function(){ window.scrollTo({top:0, behavior:'instant'}); }); return page; }",
-        Output("nav-scroll", "data"),
-        Input("nav", "value"),
-    )
-
     @app.callback(
         Output("layout", "disabled"),
         Output("group", "disabled"),
