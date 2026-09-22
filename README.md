@@ -16,6 +16,23 @@ Abre **http://127.0.0.1:8050**. También puedes usar `./INICIAR.ps1` en PowerShe
 
 En macOS/Linux, sustituye `.venv\Scripts\python` por `.venv/bin/python`. El comando `statcontrol` también está disponible después de instalar el paquete.
 
+## Ejecutar en Visual Studio Code
+
+1. Abre Visual Studio Code y selecciona **Archivo > Abrir carpeta**. Abre la carpeta raíz de `statcontrol-pro`, donde están `app.py` y `pyproject.toml`.
+2. Instala la extensión oficial **Python** de Microsoft si aún no la tienes.
+3. Abre **Terminal > Nuevo terminal** y ejecuta una sola vez:
+
+   ```powershell
+   python -m venv .venv
+   .venv\Scripts\python -m pip install -e .
+   ```
+
+4. Pulsa `Ctrl+Shift+P`, busca **Python: Select Interpreter** y elige `.venv\Scripts\python.exe` si Visual Studio Code no lo seleccionó automáticamente.
+5. Abre **Ejecutar y depurar**, elige **StatControl Pro** y pulsa `F5`.
+6. Cuando la terminal muestre que Dash está funcionando, abre <http://127.0.0.1:8050>.
+
+Para detener la aplicación usa `Shift+F5` o `Ctrl+C` en su terminal. En aperturas posteriores basta con abrir la carpeta y pulsar `F5`. También puedes iniciarla sin el depurador con `./INICIAR.ps1`.
+
 ## Qué puedes hacer
 
 - Cargar CSV, XLSX, TSV y TXT delimitado; pegar tablas desde Excel.
